@@ -1,0 +1,106 @@
+{
+  "season": { "number": 51, "location": "Mamanuca Islands, Fiji" },
+
+  "tribes": {
+    "toka":  { "name": "Toka", "color": "#F5C518", "text": "#F5C518" },
+    "savu":  { "name": "Savu", "color": "#8B5CF6", "text": "#B9A0FF" },
+    "dina":  { "name": "Dina", "color": "#E5383B", "text": "#FF7A7C" },
+    "exile": { "name": "Exile Island", "color": "#8A8F98", "text": "#C3C7CE" }
+  },
+
+  "cast": {
+    "aaliyah":  { "name": "Aaliyah Puglia",            "short": "Aaliyah",  "photo": "assets/photos/aaliyah.jpg" },
+    "ana":      { "name": "Ana Sani",                  "short": "Ana",      "photo": "assets/photos/ana.jpg" },
+    "rob":      { "name": "Rob Antonson",              "short": "Rob",      "photo": "assets/photos/rob.jpg" },
+    "patt":     { "name": "Patt Cannaday",             "short": "Patt",     "photo": "assets/photos/patt.jpg" },
+    "jenna":    { "name": "Jenna Doore",               "short": "Jenna",    "photo": "assets/photos/jenna.jpg" },
+    "brady":    { "name": "Brady Booker",              "short": "Brady",    "photo": "assets/photos/brady.jpg" },
+    "carter":   { "name": "Carter Krull",              "short": "Carter",   "photo": "assets/photos/carter.jpg" },
+    "kristin":  { "name": "Kristin Flickinger",        "short": "Kristin",  "photo": "assets/photos/kristin.jpg" },
+    "maggie":   { "name": "Maggie Nestor",             "short": "Maggie",   "photo": "assets/photos/maggie.jpg" },
+    "mike":     { "name": "Mike Pinsky",               "short": "Mike",     "photo": "assets/photos/mike.jpg" },
+    "thienan":  { "name": "Thien An Nguyen",           "short": "Thien An", "photo": "assets/photos/thienan.jpg" },
+    "alexis":   { "name": "Alexis Levine",             "short": "Alexis",   "photo": "assets/photos/alexis.jpg" },
+    "devin":    { "name": "Devin Way",                 "short": "Devin",    "photo": "assets/photos/devin.jpg" },
+    "jelly":    { "name": "Angelica \"Jelly\" Loblack", "short": "Jelly",   "photo": "assets/photos/jelly.jpg" },
+    "ori":      { "name": "Ori Jean-Charles",          "short": "Ori",      "photo": "assets/photos/ori.jpg" },
+    "cristian": { "name": "Cristian Chavez",           "short": "Cristian", "photo": "assets/photos/cristian.jpg" },
+    "eric":     { "name": "Eric Macksoud",             "short": "Eric",     "photo": "assets/photos/eric.jpg" },
+    "kilby":    { "name": "Danny \"Kilby\" Kilby",     "short": "Kilby",    "photo": "assets/photos/kilby.jpg" },
+    "lewis":    { "name": "Lewis Kelly",               "short": "Lewis",    "photo": "assets/photos/lewis.jpg" },
+    "linnea":   { "name": "Linnea Capobianco",         "short": "Linnea",   "photo": "assets/photos/linnea.jpg" },
+    "sharonda": { "name": "Sharonda Cox",              "short": "Sharonda", "photo": "assets/photos/sharonda.jpg" }
+  },
+
+  "episodes": [
+    { "n": 0, "title": "The marooning", "aired": "Day 1",
+      "tribes": { "toka": ["thienan","jelly","brady","kilby","devin","jenna","maggie","mike","patt","aaliyah"],
+                  "savu": ["alexis","ana","carter","cristian","eric","kristin","linnea","ori","rob","sharonda"],
+                  "exile": ["lewis"] },
+      "out": [] },
+    { "n": 1, "title": "Permanent Uncertainty", "aired": "Sep 23",
+      "tribes": { "toka": ["thienan","jelly","brady","kilby","devin","jenna","maggie","mike","patt","lewis"],
+                  "savu": ["alexis","ana","carter","cristian","eric","kristin","linnea","ori","rob","sharonda"] },
+      "out": [ { "id": "aaliyah", "how": "Voted out", "tribe": "toka" } ] },
+    { "n": 2, "title": "Weaponized Honesty", "aired": "Sep 30",
+      "tribes": { "toka": ["thienan","jelly","brady","kilby","devin","jenna","maggie","mike","patt","lewis"],
+                  "savu": ["alexis","carter","cristian","eric","kristin","linnea","ori","rob","sharonda"] },
+      "out": [ { "id": "ana", "how": "Voted out", "tribe": "savu" } ] },
+    { "n": 3, "title": "What I'm Smellin' Is Stinky", "aired": "Oct 7",
+      "tribes": { "toka": ["thienan","jelly","brady","kilby","devin","jenna","maggie","mike","lewis","carter"],
+                  "savu": ["alexis","cristian","eric","kristin","linnea","ori","sharonda"] },
+      "out": [ { "id": "rob", "how": "Quit", "tribe": "savu" }, { "id": "patt", "how": "Voted out", "tribe": "toka" } ] },
+    { "n": 4, "title": "That's the Magic of Survivor", "aired": "Oct 14",
+      "tribes": { "toka": ["thienan","brady","carter","kristin","maggie","mike"],
+                  "savu": ["alexis","jelly","devin","ori"],
+                  "dina": ["cristian","kilby","eric","linnea","lewis","sharonda"] },
+      "out": [ { "id": "jenna", "how": "Voted out", "tribe": "savu" } ] }
+  ],
+
+  "alliances": {
+    "1": [
+      { "name": "Helicopter Alliance", "kind": "Alliance", "members": ["devin","jelly","aaliyah"],
+        "note": "Devin and Jelly were on the wrong side of Toka's first vote and lost Aaliyah." }
+    ],
+    "2": [
+      { "name": "Helicopter Alliance", "kind": "Alliance", "members": ["devin","jelly"],
+        "note": "Down to Devin and Jelly on Toka after losing Aaliyah." },
+      { "name": "Savu Majority", "kind": "Voting bloc", "members": ["sharonda","linnea","alexis","eric","kristin","cristian"],
+        "note": "Blindsided Ana 6-4, leaving Carter, Rob and Ori out of the loop." },
+      { "name": "Persian Sisters", "kind": "Pair", "members": ["alexis","ana"],
+        "note": "Fell apart when Alexis rallied the tribe against Ana." },
+      { "name": "Jelly & Patt", "kind": "Pair", "members": ["jelly","patt"],
+        "note": "Jelly shared her idol with Patt to lock in a new number one." },
+      { "name": "Sharonda & Ori", "kind": "Pair", "members": ["sharonda","ori"],
+        "note": "Ori is Sharonda's real number one." }
+    ],
+    "3": [
+      { "name": "Helicopter Alliance", "kind": "Alliance", "members": ["devin","jelly","ori","sharonda","aaliyah"],
+        "note": "Turns out it stretches across tribes: Devin reconnected with Sharonda at the well, and Ori is his top ally on Savu." },
+      { "name": "Cool Kids", "kind": "Alliance", "members": ["devin","jelly","mike","brady","patt"],
+        "note": "Ran Toka until Patt was blindsided." },
+      { "name": "The Misfits", "kind": "Alliance", "members": ["kilby","maggie","thienan","jenna","lewis","carter"],
+        "note": "Flipped Toka 6-5 to blindside Patt, with Lewis and Carter as the swing votes." },
+      { "name": "Sharonda & Linnea", "kind": "Pair", "members": ["sharonda","linnea"],
+        "note": "Ringleaders of the Savu majority." },
+      { "name": "Kilby & Maggie", "kind": "Pair", "members": ["kilby","maggie"],
+        "note": "Plotted the Patt blindside together." }
+    ],
+    "4": [
+      { "name": "Helicopter Alliance", "kind": "Alliance", "members": ["devin","jelly","ori","sharonda","aaliyah"],
+        "note": "Devin, Jelly and Ori landed together on new Savu and voted out Jenna. Sharonda is on Dina." },
+      { "name": "Lover Boys", "kind": "Pair", "members": ["eric","kilby"],
+        "note": "Their own name for it, and the rest of Dina has noticed." },
+      { "name": "Sharonda & Linnea", "kind": "Pair", "members": ["sharonda","linnea"],
+        "note": "Power brokers on Dina, with Kilby in their sights." },
+      { "name": "Thien An, Maggie & Carter", "kind": "Trio", "members": ["thienan","maggie","carter"],
+        "note": "The Misfits core that stayed together on new Toka." },
+      { "name": "Mike & Kristin", "kind": "Pair", "members": ["mike","kristin"],
+        "note": "Mike pitched Kristin a close alliance on new Toka. Still tentative." },
+      { "name": "Cool Kids", "kind": "Alliance", "members": ["devin","jelly","mike","brady","patt"],
+        "note": "Split by the swap: Devin and Jelly on Savu, Mike and Brady on Toka." },
+      { "name": "The Misfits", "kind": "Alliance", "members": ["kilby","maggie","thienan","jenna","lewis","carter"],
+        "note": "Scattered across all three tribes by the swap." }
+    ]
+  }
+}

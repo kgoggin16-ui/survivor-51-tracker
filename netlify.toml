@@ -1,0 +1,13 @@
+[build]
+  publish = "."
+
+# Always fetch the freshest season data after a Thursday update.
+[[headers]]
+  for = "/data.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
