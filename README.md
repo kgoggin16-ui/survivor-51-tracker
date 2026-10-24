@@ -1,6 +1,6 @@
 # Survivor 51 Tribe Tracker
 
-Spoiler-safe fan site showing tribes, alliances, advantages, votes and castaway profiles for each episode of Survivor 51.
+Spoiler-safe fan site showing tribes, alliances, advantages, power rankings, votes and castaway profiles for each episode of Survivor 51.
 Plain HTML, CSS and JavaScript. No build step.
 
 ## Files
@@ -29,8 +29,12 @@ Plain HTML, CSS and JavaScript. No build step.
    Carry held items forward each week with an updated note. Same spoiler rule as alliances.
    Optional `"knows": [keys]` lists who else knows about it (shown as "Who knows"); `[]` means nobody else, a secret.
    Leave it out when the recaps don't say.
-4. New tribe or merge: add it to `tribes` with `name`, `color` (ring color) and `text` (label color, at least 4.5:1 contrast on #0B0B0C).
-5. New castaway (e.g. a returning player): add them to `cast` with `name`, `short`, `job` (occupation, shown under
+4. Add an entry to `rankings` keyed by the episode number (as a string) once DraftKings Network posts its power rankings
+   for that episode (usually the Friday after): `{ "source", "url", "list": [keys, best placed first], "notes"? }`.
+   `list` must hold exactly the castaways still in the game; `notes` maps a key to one short paraphrased line (not quotes).
+   Movement arrows are worked out from the previous episode's list.
+5. New tribe or merge: add it to `tribes` with `name`, `color` (ring color) and `text` (label color, at least 4.5:1 contrast on #0B0B0C).
+6. New castaway (e.g. a returning player): add them to `cast` with `name`, `short`, `job` (occupation, shown under
    their photo on the Tribes page), `age`, `home` (hometown) and `"photo": ""` so they show initials until a photo is added.
 
 Commit the change and Netlify republishes the site within about a minute.
