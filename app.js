@@ -124,13 +124,24 @@
     list.forEach(function (a) {
       var c = D.cast[a.id], tk = tribeOf(a.id), T = tk ? D.tribes[tk] : null;
       var spent = a.status !== 'Held';
+      // knows: who else is aware of it. [] means a secret; leaving it out means the recaps don't say.
+      var knows = '';
+      if (Array.isArray(a.knows)) {
+        knows = '<p class="knows"><span class="tag">Who knows</span>' + (a.knows.length
+          ? a.knows.map(function (id) {
+              var k = tribeOf(id);
+              return '<span style="color:' + (k ? D.tribes[k].text : 'var(--dim)') + '">' +
+                esc(D.cast[id].short) + (k ? '' : ' (out)') + '</span>';
+            }).join(', ')
+          : '<span class="secret">Nobody else. It’s a secret.</span>') + '</p>';
+      }
       html += '<article class="card adv' + (spent ? ' spent' : '') + '"><div class="card-head">' +
         '<h2 class="card-name" style="color:' + (spent ? 'var(--dim)' : 'var(--gold)') + '">' + esc(a.item) + '</h2>' +
         '<span class="tag">' + esc(a.status) + (spent ? ' this ep' : '') + '</span></div>' +
         '<div class="card-members"><a class="mini' + (T ? '' : ' out') + '" ' + wikiAttrs(c) + '>' +
           '<span class="ring" style="--c:' + (T ? T.color : '#4A4A50') + '">' + face(c) + '</span>' +
           '<span style="color:' + (T ? T.text : 'var(--dim)') + '">' + esc(c.short) + (T ? '' : ' · out this ep') + '</span></a></div>' +
-        '<p class="note">' + esc(a.note) + '</p></article>';
+        knows + '<p class="note">' + esc(a.note) + '</p></article>';
     });
     return html + '</div>';
   }

@@ -24,6 +24,8 @@ Plain HTML, CSS and JavaScript. No build step.
    END of the episode, plus any played, given away or lost during it. Each item is
    `{ "id", "item", "status": "Held" | "Played" | "Given away" | "Lost", "note" }`, where `id` is who holds (or held) it.
    Carry held items forward each week with an updated note. Same spoiler rule as alliances.
+   Optional `"knows": [keys]` lists who else knows about it (shown as "Who knows"); `[]` means nobody else, a secret.
+   Leave it out when the recaps don't say.
 4. New tribe or merge: add it to `tribes` with `name`, `color` (ring color) and `text` (label color, at least 4.5:1 contrast on #0B0B0C).
 5. New castaway (e.g. a returning player): add them to `cast` with `name`, `short`, `job` (occupation, shown under
    their photo on the Tribes page) and `"photo": ""` so they show initials until a photo is added.

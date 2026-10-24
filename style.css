@@ -123,6 +123,9 @@ button { font-family: inherit; }
 .adv { border-color: color-mix(in srgb, var(--gold) 35%, var(--line)); }
 .adv.spent { border-color: var(--line); background: transparent; }
 .adv.spent .mini img { filter: grayscale(1); opacity: .55; }
+.knows { margin: 0; font-size: 14px; font-weight: 600; line-height: 1.5; }
+.knows .tag { margin-right: 10px; }
+.knows .secret { color: var(--gold); }
 
 /* Castaways */
 .boots { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 32px 16px; width: 100%; }

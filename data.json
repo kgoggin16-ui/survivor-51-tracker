@@ -121,43 +121,43 @@
 
   "advantages": {
     "1": [
-      { "id": "rob", "item": "Hidden Immunity Idol", "status": "Held",
+      { "id": "rob", "item": "Hidden Immunity Idol", "status": "Held", "knows": [],
         "note": "Found it at Savu camp. No conditions, playable until five are left." }
     ],
     "2": [
       { "id": "rob", "item": "Hidden Immunity Idol", "status": "Held",
         "note": "Promised to play it on Eric at Savu's first Tribal, but didn't." },
-      { "id": "jelly", "item": "Hidden Immunity Idol", "status": "Held",
+      { "id": "jelly", "item": "Hidden Immunity Idol", "status": "Held", "knows": ["patt"],
         "note": "Found it at Toka camp after a reward. She told Patt, but not Devin." }
     ],
     "3": [
       { "id": "rob", "item": "Hidden Immunity Idol", "status": "Given away",
         "note": "Handed it to Carter before quitting." },
-      { "id": "carter", "item": "Hidden Immunity Idol", "status": "Held",
+      { "id": "carter", "item": "Hidden Immunity Idol", "status": "Held", "knows": ["rob"],
         "note": "A parting gift from Rob. Carter is now on Toka." },
-      { "id": "jelly", "item": "Hidden Immunity Idol", "status": "Held",
+      { "id": "jelly", "item": "Hidden Immunity Idol", "status": "Held", "knows": ["patt"],
         "note": "Patt, the only one who knew about it, was voted out." },
-      { "id": "devin", "item": "Secret Extra Vote", "status": "Held",
+      { "id": "devin", "item": "Secret Extra Vote", "status": "Held", "knows": ["sharonda"],
         "note": "Found with Sharonda at the Savu water well during his visit." },
-      { "id": "maggie", "item": "Extra Vote advantage", "status": "Held",
+      { "id": "maggie", "item": "Extra Vote advantage", "status": "Held", "knows": ["brady"],
         "note": "Ended up with Maggie at Toka after she promised Brady to vote his way, a promise she then broke." }
     ],
     "4": [
       { "id": "carter", "item": "Hidden Immunity Idol", "status": "Held",
         "note": "Still holding the idol Rob gave him." },
-      { "id": "jelly", "item": "Hidden Immunity Idol", "status": "Held",
+      { "id": "jelly", "item": "Hidden Immunity Idol", "status": "Held", "knows": [],
         "note": "Nobody else in the game knows she has it." },
-      { "id": "devin", "item": "Secret Extra Vote", "status": "Held",
+      { "id": "devin", "item": "Secret Extra Vote", "status": "Held", "knows": ["sharonda"],
         "note": "Unused. He's on new Savu with Jelly and Ori." },
-      { "id": "maggie", "item": "Extra Vote advantage", "status": "Held",
+      { "id": "maggie", "item": "Extra Vote advantage", "status": "Held", "knows": ["brady"],
         "note": "Unused. She's on new Toka." }
     ],
     "5": [
       { "id": "carter", "item": "Hidden Immunity Idol", "status": "Held",
         "note": "Still unplayed. Toka won immunity." },
-      { "id": "jelly", "item": "Hidden Immunity Idol", "status": "Held",
+      { "id": "jelly", "item": "Hidden Immunity Idol", "status": "Held", "knows": [],
         "note": "Still a secret. She didn't need it in the 3-1 vote against Alexis." },
-      { "id": "devin", "item": "Secret Extra Vote", "status": "Held",
+      { "id": "devin", "item": "Secret Extra Vote", "status": "Held", "knows": ["sharonda","alexis"],
         "note": "Flashed it at Alexis to win her over, but didn't need to use it." },
       { "id": "maggie", "item": "Extra Vote advantage", "status": "Given away",
         "note": "Sent to Dina, she handed both of its extra votes to Kilby and Lewis." },
