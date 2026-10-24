@@ -9,27 +9,27 @@
   },
 
   "cast": {
-    "aaliyah":  { "name": "Aaliyah Puglia",            "short": "Aaliyah",  "photo": "assets/photos/aaliyah.jpg" },
-    "ana":      { "name": "Ana Sani",                  "short": "Ana",      "photo": "assets/photos/ana.jpg" },
-    "rob":      { "name": "Rob Antonson",              "short": "Rob",      "photo": "assets/photos/rob.jpg" },
-    "patt":     { "name": "Patt Cannaday",             "short": "Patt",     "photo": "assets/photos/patt.jpg" },
-    "jenna":    { "name": "Jenna Doore",               "short": "Jenna",    "photo": "assets/photos/jenna.jpg" },
-    "brady":    { "name": "Brady Booker",              "short": "Brady",    "photo": "assets/photos/brady.jpg" },
-    "carter":   { "name": "Carter Krull",              "short": "Carter",   "photo": "assets/photos/carter.jpg" },
-    "kristin":  { "name": "Kristin Flickinger",        "short": "Kristin",  "photo": "assets/photos/kristin.jpg" },
-    "maggie":   { "name": "Maggie Nestor",             "short": "Maggie",   "photo": "assets/photos/maggie.jpg" },
-    "mike":     { "name": "Mike Pinsky",               "short": "Mike",     "photo": "assets/photos/mike.jpg" },
-    "thienan":  { "name": "Thien An Nguyen",           "short": "Thien An", "photo": "assets/photos/thienan.jpg" },
-    "alexis":   { "name": "Alexis Levine",             "short": "Alexis",   "photo": "assets/photos/alexis.jpg" },
-    "devin":    { "name": "Devin Way",                 "short": "Devin",    "photo": "assets/photos/devin.jpg" },
-    "jelly":    { "name": "Angelica \"Jelly\" Loblack", "short": "Jelly",   "photo": "assets/photos/jelly.jpg" },
-    "ori":      { "name": "Ori Jean-Charles",          "short": "Ori",      "photo": "assets/photos/ori.jpg" },
-    "cristian": { "name": "Cristian Chavez",           "short": "Cristian", "photo": "assets/photos/cristian.jpg" },
-    "eric":     { "name": "Eric Macksoud",             "short": "Eric",     "photo": "assets/photos/eric.jpg" },
-    "kilby":    { "name": "Danny \"Kilby\" Kilby",     "short": "Kilby",    "photo": "assets/photos/kilby.jpg" },
-    "lewis":    { "name": "Lewis Kelly",               "short": "Lewis",    "photo": "assets/photos/lewis.jpg" },
-    "linnea":   { "name": "Linnea Capobianco",         "short": "Linnea",   "photo": "assets/photos/linnea.jpg" },
-    "sharonda": { "name": "Sharonda Cox",              "short": "Sharonda", "photo": "assets/photos/sharonda.jpg" }
+    "aaliyah":  { "name": "Aaliyah Puglia",            "short": "Aaliyah", "job": "Chef",                      "photo": "assets/photos/aaliyah.jpg" },
+    "ana":      { "name": "Ana Sani",                  "short": "Ana", "job": "Voice actress",             "photo": "assets/photos/ana.jpg" },
+    "rob":      { "name": "Rob Antonson",              "short": "Rob", "job": "Airline gate agent",        "photo": "assets/photos/rob.jpg" },
+    "patt":     { "name": "Patt Cannaday",             "short": "Patt", "job": "Federal prosecutor",        "photo": "assets/photos/patt.jpg" },
+    "jenna":    { "name": "Jenna Doore",               "short": "Jenna", "job": "Wedding photographer",      "photo": "assets/photos/jenna.jpg" },
+    "brady":    { "name": "Brady Booker",              "short": "Brady", "job": "Pro wrestler",              "photo": "assets/photos/brady.jpg" },
+    "carter":   { "name": "Carter Krull",              "short": "Carter", "job": "Livestock farmer",          "photo": "assets/photos/carter.jpg" },
+    "kristin":  { "name": "Kristin Flickinger",        "short": "Kristin", "job": "Crisis management",         "photo": "assets/photos/kristin.jpg" },
+    "maggie":   { "name": "Maggie Nestor",             "short": "Maggie", "job": "Farmer",                    "photo": "assets/photos/maggie.jpg" },
+    "mike":     { "name": "Mike Pinsky",               "short": "Mike", "job": "Baseball executive",        "photo": "assets/photos/mike.jpg" },
+    "thienan":  { "name": "Thien An Nguyen",           "short": "Thien An", "job": "Medical student",           "photo": "assets/photos/thienan.jpg" },
+    "alexis":   { "name": "Alexis Levine",             "short": "Alexis", "job": "Criminal defense attorney", "photo": "assets/photos/alexis.jpg" },
+    "devin":    { "name": "Devin Way",                 "short": "Devin", "job": "Actor",                     "photo": "assets/photos/devin.jpg" },
+    "jelly":    { "name": "Angelica \"Jelly\" Loblack", "short": "Jelly", "job": "Sociology professor",       "photo": "assets/photos/jelly.jpg" },
+    "ori":      { "name": "Ori Jean-Charles",          "short": "Ori", "job": "Personal trainer",          "photo": "assets/photos/ori.jpg" },
+    "cristian": { "name": "Cristian Chavez",           "short": "Cristian", "job": "Head of HR",                "photo": "assets/photos/cristian.jpg" },
+    "eric":     { "name": "Eric Macksoud",             "short": "Eric", "job": "Mental health counselor",   "photo": "assets/photos/eric.jpg" },
+    "kilby":    { "name": "Danny \"Kilby\" Kilby",     "short": "Kilby", "job": "Game designer",             "photo": "assets/photos/kilby.jpg" },
+    "lewis":    { "name": "Lewis Kelly",               "short": "Lewis", "job": "Farmer",                    "photo": "assets/photos/lewis.jpg" },
+    "linnea":   { "name": "Linnea Capobianco",         "short": "Linnea", "job": "Entrepreneur",              "photo": "assets/photos/linnea.jpg" },
+    "sharonda": { "name": "Sharonda Cox",              "short": "Sharonda", "job": "OB-GYN resident",           "photo": "assets/photos/sharonda.jpg" }
   },
 
   "episodes": [
@@ -116,6 +116,55 @@
         "note": "Tied 4-4 against Lewis twice, but wouldn't risk rocks, so Linnea went home." },
       { "name": "The Misfits", "kind": "Alliance", "members": ["kilby","maggie","thienan","jenna","lewis","carter"],
         "note": "Maggie visited Dina and handed both her extra votes to Kilby and Lewis to target Linnea." }
+    ]
+  },
+
+  "advantages": {
+    "1": [
+      { "id": "rob", "item": "Hidden Immunity Idol", "status": "Held",
+        "note": "Found it at Savu camp. No conditions, playable until five are left." }
+    ],
+    "2": [
+      { "id": "rob", "item": "Hidden Immunity Idol", "status": "Held",
+        "note": "Promised to play it on Eric at Savu's first Tribal, but didn't." },
+      { "id": "jelly", "item": "Hidden Immunity Idol", "status": "Held",
+        "note": "Found it at Toka camp after a reward. She told Patt, but not Devin." }
+    ],
+    "3": [
+      { "id": "rob", "item": "Hidden Immunity Idol", "status": "Given away",
+        "note": "Handed it to Carter before quitting." },
+      { "id": "carter", "item": "Hidden Immunity Idol", "status": "Held",
+        "note": "A parting gift from Rob. Carter is now on Toka." },
+      { "id": "jelly", "item": "Hidden Immunity Idol", "status": "Held",
+        "note": "Patt, the only one who knew about it, was voted out." },
+      { "id": "devin", "item": "Secret Extra Vote", "status": "Held",
+        "note": "Found with Sharonda at the Savu water well during his visit." },
+      { "id": "maggie", "item": "Extra Vote advantage", "status": "Held",
+        "note": "Ended up with Maggie at Toka after she promised Brady to vote his way, a promise she then broke." }
+    ],
+    "4": [
+      { "id": "carter", "item": "Hidden Immunity Idol", "status": "Held",
+        "note": "Still holding the idol Rob gave him." },
+      { "id": "jelly", "item": "Hidden Immunity Idol", "status": "Held",
+        "note": "Nobody else in the game knows she has it." },
+      { "id": "devin", "item": "Secret Extra Vote", "status": "Held",
+        "note": "Unused. He's on new Savu with Jelly and Ori." },
+      { "id": "maggie", "item": "Extra Vote advantage", "status": "Held",
+        "note": "Unused. She's on new Toka." }
+    ],
+    "5": [
+      { "id": "carter", "item": "Hidden Immunity Idol", "status": "Held",
+        "note": "Still unplayed. Toka won immunity." },
+      { "id": "jelly", "item": "Hidden Immunity Idol", "status": "Held",
+        "note": "Still a secret. She didn't need it in the 3-1 vote against Alexis." },
+      { "id": "devin", "item": "Secret Extra Vote", "status": "Held",
+        "note": "Flashed it at Alexis to win her over, but didn't need to use it." },
+      { "id": "maggie", "item": "Extra Vote advantage", "status": "Given away",
+        "note": "Sent to Dina, she handed both of its extra votes to Kilby and Lewis." },
+      { "id": "kilby", "item": "Extra vote", "status": "Played",
+        "note": "A gift from Maggie, cast against Linnea to force the 4-4 deadlock." },
+      { "id": "lewis", "item": "Extra vote", "status": "Played",
+        "note": "A gift from Maggie, cast against Linnea to force the 4-4 deadlock." }
     ]
   }
 }

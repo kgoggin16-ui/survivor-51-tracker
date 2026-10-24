@@ -1,6 +1,6 @@
 # Survivor 51 Tribe Tracker
 
-Spoiler-safe fan site showing tribes, alliances and castaways for each episode of Survivor 51.
+Spoiler-safe fan site showing tribes, alliances, advantages and castaways for each episode of Survivor 51.
 Plain HTML, CSS and JavaScript. No build step.
 
 ## Files
@@ -20,7 +20,13 @@ Plain HTML, CSS and JavaScript. No build step.
    `{ "name", "kind": "Alliance" | "Trio" | "Pair" | "Voting bloc", "members": [keys], "note" }`.
    Spoiler rule: only what was shown on screen by the end of that episode. Never edit earlier episodes with later reveals.
    Members who left in an earlier episode are hidden automatically; those who left that episode are greyed out.
-3. New tribe or merge: add it to `tribes` with `name`, `color` (ring color) and `text` (label color, at least 4.5:1 contrast on #0B0B0C).
+3. Add an entry to `advantages` keyed by the episode number (as a string): every idol or advantage still held at the
+   END of the episode, plus any played, given away or lost during it. Each item is
+   `{ "id", "item", "status": "Held" | "Played" | "Given away" | "Lost", "note" }`, where `id` is who holds (or held) it.
+   Carry held items forward each week with an updated note. Same spoiler rule as alliances.
+4. New tribe or merge: add it to `tribes` with `name`, `color` (ring color) and `text` (label color, at least 4.5:1 contrast on #0B0B0C).
+5. New castaway (e.g. a returning player): add them to `cast` with `name`, `short`, `job` (occupation, shown under
+   their photo on the Tribes page) and `"photo": ""` so they show initials until a photo is added.
 
 Commit the change and Netlify republishes the site within about a minute.
 

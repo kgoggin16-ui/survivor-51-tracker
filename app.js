@@ -5,7 +5,7 @@
 
   var app = document.getElementById('app');
   var D = null;
-  var VIEWS = [['tribes', 'Tribes'], ['alliances', 'Alliances'], ['castaways', 'Castaways']];
+  var VIEWS = [['tribes', 'Tribes'], ['alliances', 'Alliances'], ['advantages', 'Advantages'], ['castaways', 'Castaways']];
   var state = { ep: null, view: viewFromHash() };
 
   function viewFromHash() {
@@ -60,7 +60,8 @@
         var c = D.cast[id];
         html += '<div class="pc" data-i="' + i + '"><a ' + wikiAttrs(c) + '>' +
           '<span class="ring" style="animation-delay:-' + (i * 0.17).toFixed(2) + 's">' + face(c) + '</span>' +
-          '<span class="pc-name" style="color:' + T.text + '">' + esc(c.short) + '</span></a></div>';
+          '<span class="pc-name" style="color:' + T.text + '">' + esc(c.short) + '</span>' +
+          (c.job ? '<span class="pc-job">' + esc(c.job) + '</span>' : '') + '</a></div>';
       });
       html += '</div></section>';
     });
@@ -99,6 +100,36 @@
       html += '<article class="card"><div class="card-head"><h2' + nameAttr + '>' + esc(a.name) + '</h2>' +
         '<span class="tag">' + esc(a.kind) + ' · ' + where + '</span></div>' +
         '<div class="card-members">' + members + '</div>' +
+        '<p class="note">' + esc(a.note) + '</p></article>';
+    });
+    return html + '</div>';
+  }
+
+  function renderAdvantages(E, ep) {
+    var tribeOf = function (id) {
+      var ks = Object.keys(E.tribes);
+      for (var i = 0; i < ks.length; i++) if (E.tribes[ks[i]].indexOf(id) !== -1) return ks[i];
+      return null;
+    };
+    var list = ((D.advantages || {})[String(ep)] || []).slice();
+    if (!list.length) {
+      return '<div class="summary">As of ' + epLabel(ep) + '</div>' +
+        '<p class="empty">No idols or advantages found yet.</p>';
+    }
+    // Anything still held comes first; played, given away or lost this episode goes after.
+    list.sort(function (a, b) { return (a.status !== 'Held') - (b.status !== 'Held'); });
+    var held = list.filter(function (a) { return a.status === 'Held'; }).length;
+    var html = '<div class="summary">' + held + (held === 1 ? ' advantage' : ' advantages') + ' in play as of ' +
+      epLabel(ep) + ' · from episode recaps</div><div class="cards">';
+    list.forEach(function (a) {
+      var c = D.cast[a.id], tk = tribeOf(a.id), T = tk ? D.tribes[tk] : null;
+      var spent = a.status !== 'Held';
+      html += '<article class="card adv' + (spent ? ' spent' : '') + '"><div class="card-head">' +
+        '<h2 class="card-name" style="color:' + (spent ? 'var(--dim)' : 'var(--gold)') + '">' + esc(a.item) + '</h2>' +
+        '<span class="tag">' + esc(a.status) + (spent ? ' this ep' : '') + '</span></div>' +
+        '<div class="card-members"><a class="mini' + (T ? '' : ' out') + '" ' + wikiAttrs(c) + '>' +
+          '<span class="ring" style="--c:' + (T ? T.color : '#4A4A50') + '">' + face(c) + '</span>' +
+          '<span style="color:' + (T ? T.text : 'var(--dim)') + '">' + esc(c.short) + (T ? '' : ' · out this ep') + '</span></a></div>' +
         '<p class="note">' + esc(a.note) + '</p></article>';
     });
     return html + '</div>';
@@ -145,7 +176,7 @@
     var ep = gateOpen ? 0 : state.ep;
     var E = D.episodes[ep];
     var last = latest();
-    var titles = { tribes: 'Current Survivor Tribes', alliances: 'Alliances', castaways: 'Castaways' };
+    var titles = { tribes: 'Current Survivor Tribes', alliances: 'Alliances', advantages: 'Advantages', castaways: 'Castaways' };
 
     var tabs = VIEWS.map(function (v) {
       return '<button class="tab' + (state.view === v[0] ? ' on' : '') + '" data-view="' + v[0] + '"' +
@@ -158,6 +189,7 @@
     var sub = (ep === last ? 'Latest episode · ' : '') + (ep === 0 ? 'Starting tribes' : esc(E.title) + ' · aired ' + esc(E.aired));
 
     var body = state.view === 'alliances' ? renderAlliances(E, ep)
+      : state.view === 'advantages' ? renderAdvantages(E, ep)
       : state.view === 'castaways' ? renderCastaways(ep)
       : renderTribes(E);
 
