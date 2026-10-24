@@ -127,6 +127,56 @@ button { font-family: inherit; }
 .knows .tag { margin-right: 10px; }
 .knows .secret { color: var(--gold); }
 
+/* Vote history */
+.grid-wrap { width: 100%; overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
+.vgrid { border-collapse: collapse; width: max-content; min-width: 100%; font-size: 14px; }
+.vgrid th, .vgrid td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: center; white-space: nowrap; }
+.vgrid tbody tr:last-child th, .vgrid tbody tr:last-child td { border-bottom: 0; }
+.vgrid thead th { font-weight: 600; vertical-align: bottom; }
+.vgrid .who { position: sticky; left: 0; z-index: 1; background: var(--card); text-align: left; border-right: 1px solid var(--line); }
+.vgrid .who a { font-weight: 600; text-decoration: none; }
+.vgrid .who a:hover { text-decoration: underline; }
+.col-ep { display: block; font-size: 13px; }
+.col-tribe { display: block; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+.vgrid .hit { color: var(--gold); font-weight: 600; }
+.vgrid .miss { color: var(--ink-2); }
+.vgrid .na { color: #4A4A50; }
+.vgrid .nv { color: var(--muted); font-style: italic; }
+.vgrid .num { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.vgrid tr.gone th, .vgrid tr.gone td { opacity: .7; }
+.vnotes { margin: 0; padding: 0; list-style: none; width: 100%; display: flex; flex-direction: column; gap: 8px; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+
+/* Castaway profile */
+body.locked { overflow: hidden; }
+.profile { position: fixed; inset: 0; z-index: 10; background: rgba(5,5,6,.82); display: flex; justify-content: center; align-items: flex-start; padding: 40px 16px; overflow-y: auto; }
+.profile-inner { position: relative; width: 100%; max-width: 560px; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+.pclose { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border-radius: 999px; border: 1px solid #3A3A3F; background: transparent; color: var(--ink); font-size: 24px; line-height: 1; cursor: pointer; }
+.pclose:hover { border-color: var(--ink); }
+.phead { display: flex; align-items: center; gap: 18px; padding-right: 48px; }
+.phead .ring { flex: none; width: 104px; height: 104px; }
+.phead .ring.gone img { filter: grayscale(1); }
+.pmeta, .pstatus { margin: 6px 0 0; font-size: 14px; color: var(--ink-2); line-height: 1.4; }
+.pstatus { color: var(--muted); }
+.pfine { text-align: left; margin-top: -8px; }
+.pblock { display: flex; flex-direction: column; gap: 8px; }
+.pblock h3 { margin: 0; font-weight: 600; }
+.pblock ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+.pblock li .tag { margin-right: 8px; }
+.pblock .ok { color: var(--gold); }
+.pempty { margin: 0; font-size: 14px; color: var(--muted); }
+.ppath { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.pchip { display: inline-flex; flex-direction: column; padding: 6px 12px; border: 2px solid var(--c); border-radius: 12px; font-weight: 600; font-size: 14px; line-height: 1.2; }
+.pchip small { font-weight: 400; font-size: 11px; color: var(--muted); }
+.arrow { color: var(--dim); }
+.pstats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.pstats div { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 12px 6px; border: 1px solid var(--line); border-radius: 12px; text-align: center; }
+.pstats strong { font-size: 24px; font-weight: 600; }
+.pstats span { font-size: 12px; color: var(--muted); line-height: 1.3; }
+.pwiki { margin: 0; font-size: 14px; }
+@media (max-width: 420px) {
+  .phead { flex-direction: column; align-items: flex-start; }
+}
+
 /* Castaways */
 .boots { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 32px 16px; width: 100%; }
 .boot { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; text-decoration: none; color: var(--ink); }

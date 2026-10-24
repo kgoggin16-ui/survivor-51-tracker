@@ -5,8 +5,8 @@
 
   var app = document.getElementById('app');
   var D = null;
-  var VIEWS = [['tribes', 'Tribes'], ['alliances', 'Alliances'], ['advantages', 'Advantages'], ['castaways', 'Castaways']];
-  var state = { ep: null, view: viewFromHash() };
+  var VIEWS = [['tribes', 'Tribes'], ['alliances', 'Alliances'], ['advantages', 'Advantages'], ['votes', 'Votes'], ['castaways', 'Castaways']];
+  var state = { ep: null, view: viewFromHash(), profile: null };
 
   function viewFromHash() {
     var h = (location.hash || '').replace('#', '');
@@ -38,9 +38,41 @@
       ? '<img src="' + esc(c.photo) + '" alt="" loading="lazy">'
       : '<span class="initials" aria-hidden="true">' + esc(initials(c.name)) + '</span>';
   }
+  // Castaway links open their profile; the Wiki link still works with a modifier click.
   function wikiAttrs(c) {
-    return 'href="' + esc(wiki(c.name)) + '" target="_blank" rel="noopener" aria-label="' +
-      esc(cleanName(c.name) + ' on the Survivor Wiki (opens in a new tab)') + '"';
+    return 'href="' + esc(wiki(c.name)) + '" data-id="' + c.key + '" aria-label="' +
+      esc('Open ' + cleanName(c.name) + '’s profile') + '"';
+  }
+  function tribeIn(E, id) {
+    var ks = Object.keys(E.tribes);
+    for (var i = 0; i < ks.length; i++) if (E.tribes[ks[i]].indexOf(id) !== -1) return ks[i];
+    return null;
+  }
+  // Everyone who has left by episode ep, in order: { id, ep, how, tribe, place }.
+  function bootsThrough(ep) {
+    var boots = [];
+    for (var j = 1; j <= ep; j++) {
+      D.episodes[j].out.forEach(function (o) {
+        boots.push({ id: o.id, ep: j, how: o.how, tribe: o.tribe, place: boots.length + 1 });
+      });
+    }
+    return boots;
+  }
+  // Every Tribal Council through episode ep, oldest first.
+  function tribalsThrough(ep) {
+    var list = [];
+    for (var j = 1; j <= ep; j++) {
+      (D.episodes[j].tribals || []).forEach(function (t) {
+        var gone = D.episodes[j].out.filter(function (o) { return o.tribe === t.tribe; }).map(function (o) { return o.id; });
+        list.push({ ep: j, t: t, gone: gone });
+      });
+    }
+    return list;
+  }
+  function asList(v) { return Array.isArray(v) ? v : [v]; }
+  function nameSpan(id, E) {
+    var k = tribeIn(E, id);
+    return '<span style="color:' + (k ? D.tribes[k].text : 'var(--dim)') + '">' + esc(D.cast[id].short) + '</span>';
   }
 
   // ---------- views ----------
@@ -146,6 +178,156 @@
     return html + '</div>';
   }
 
+  function renderVotes(E, ep) {
+    var cols = tribalsThrough(ep);
+    if (!cols.length) {
+      return '<div class="summary">As of ' + epLabel(ep) + '</div>' +
+        '<p class="empty">No Tribal Councils yet.</p>';
+    }
+    var boots = bootsThrough(ep);
+    var against = {};
+    cols.forEach(function (col) {
+      Object.keys(col.t.votes).forEach(function (v) {
+        asList(col.t.votes[v]).forEach(function (x) { against[x] = (against[x] || 0) + 1; });
+      });
+    });
+    // Players still in the game by tribe, then the boots, most recent first.
+    var rows = [];
+    Object.keys(E.tribes).forEach(function (k) { rows = rows.concat(E.tribes[k]); });
+    rows = rows.concat(boots.slice().reverse().map(function (b) { return b.id; }));
+
+    var head = '<tr><th scope="col" class="who">Castaway</th>' + cols.map(function (col) {
+      var T = D.tribes[col.t.tribe];
+      return '<th scope="col"><span class="col-ep">Ep ' + col.ep + '</span>' +
+        '<span class="col-tribe" style="color:' + T.text + '">' + esc(T.name) + '</span></th>';
+    }).join('') + '<th scope="col" class="num">Votes<br>against</th></tr>';
+
+    var body = rows.map(function (id) {
+      var c = D.cast[id], k = tribeIn(E, id);
+      var cells = cols.map(function (col) {
+        var v = col.t.votes[id];
+        if (v !== undefined) {
+          var ts = asList(v), hit = col.gone.indexOf(ts[0]) !== -1;
+          return '<td class="' + (hit ? 'hit' : 'miss') + '">' + esc(D.cast[ts[0]].short) +
+            (ts.length > 1 ? ' ×' + ts.length : '') + '</td>';
+        }
+        if (col.t.noVote && col.t.noVote[id]) {
+          return '<td class="nv" title="' + esc(col.t.noVote[id]) + '">No vote</td>';
+        }
+        return '<td class="na"><span aria-label="Not at this Tribal">·</span></td>';
+      }).join('');
+      return '<tr' + (k ? '' : ' class="gone"') + '><th scope="row" class="who"><a ' + wikiAttrs(c) + ' style="color:' +
+        (k ? D.tribes[k].text : 'var(--dim)') + '">' + esc(c.short) + '</a></th>' + cells +
+        '<td class="num">' + (against[id] || 0) + '</td></tr>';
+    }).join('');
+
+    var notes = cols.filter(function (col) { return col.t.note || col.t.noVote; }).map(function (col) {
+      var bits = [];
+      if (col.t.noVote) {
+        bits = Object.keys(col.t.noVote).map(function (id) {
+          return D.cast[id].short + ' didn’t vote (' + col.t.noVote[id] + ').';
+        });
+      }
+      if (col.t.note) bits.push(col.t.note);
+      return '<li><strong>Ep ' + col.ep + ' · ' + esc(D.tribes[col.t.tribe].name) + ':</strong> ' + esc(bits.join(' ')) + '</li>';
+    }).join('');
+
+    return '<div class="summary">' + cols.length + (cols.length === 1 ? ' Tribal Council' : ' Tribal Councils') +
+      ' through ' + epLabel(ep) + ' · highlighted votes went to the person who left</div>' +
+      '<div class="grid-wrap" tabindex="0" role="region" aria-label="Vote history"><table class="vgrid"><thead>' + head +
+      '</thead><tbody>' + body + '</tbody></table></div>' +
+      (notes ? '<ul class="vnotes">' + notes + '</ul>' : '');
+  }
+
+  function renderProfile(id, ep) {
+    var c = D.cast[id], E = D.episodes[ep];
+    var boot = bootsThrough(ep).filter(function (b) { return b.id === id; })[0];
+    var k = tribeIn(E, id), T = k ? D.tribes[k] : (boot ? D.tribes[boot.tribe] : null);
+    var color = T ? T.color : '#4A4A50', text = T ? T.text : 'var(--ink)';
+
+    var status = boot
+      ? ordinal(boot.place) + ' out · ' + esc(boot.how) + ' in Episode ' + boot.ep
+      : 'Still in the game' + (k ? ' on ' + esc(D.tribes[k].name) : '');
+
+    // Tribe path: one chip each time their tribe changes.
+    var path = [], last = null;
+    for (var j = 0; j <= (boot ? boot.ep : ep); j++) {
+      var tk = tribeIn(D.episodes[j], id) || (boot && j === boot.ep ? boot.tribe : null);
+      if (tk && tk !== last) { path.push({ ep: j, k: tk }); last = tk; }
+    }
+    var pathHtml = path.map(function (p) {
+      var PT = D.tribes[p.k];
+      return '<span class="pchip" style="--c:' + PT.color + ';color:' + PT.text + '">' + esc(PT.name) +
+        '<small>' + (p.ep === 0 ? 'Day 1' : 'Ep ' + p.ep) + '</small></span>';
+    }).join('<span class="arrow" aria-hidden="true">→</span>');
+
+    var cols = tribalsThrough(ep), cast = [], received = 0;
+    cols.forEach(function (col) {
+      Object.keys(col.t.votes).forEach(function (v) {
+        asList(col.t.votes[v]).forEach(function (x) { if (x === id) received++; });
+      });
+      var mine = col.t.votes[id];
+      if (mine !== undefined) {
+        var ts = asList(mine), hit = col.gone.indexOf(ts[0]) !== -1;
+        cast.push('<li><span class="tag">Ep ' + col.ep + '</span> Voted ' + esc(D.cast[ts[0]].short) +
+          (ts.length > 1 ? ' ×' + ts.length : '') + (hit ? ' <span class="ok">· went home</span>' : '') + '</li>');
+      } else if (col.t.noVote && col.t.noVote[id]) {
+        cast.push('<li><span class="tag">Ep ' + col.ep + '</span> Didn’t vote (' + esc(col.t.noVote[id]) + ')</li>');
+      }
+    });
+    var hits = cols.filter(function (col) {
+      var m = col.t.votes[id];
+      return m !== undefined && col.gone.indexOf(asList(m)[0]) !== -1;
+    }).length;
+
+    // Advantages they've held (latest status of each), and ones they know someone else has.
+    var advs = {}, knowsOf = [];
+    for (var a = 1; a <= ep; a++) {
+      ((D.advantages || {})[String(a)] || []).forEach(function (x) {
+        if (x.id === id) advs[x.item] = x;
+      });
+    }
+    ((D.advantages || {})[String(ep)] || []).forEach(function (x) {
+      if (x.status === 'Held' && x.id !== id && (x.knows || []).indexOf(id) !== -1) knowsOf.push(x);
+    });
+    var advHtml = Object.keys(advs).map(function (name) {
+      var x = advs[name];
+      return '<li><strong>' + esc(name) + '</strong> · ' + esc(x.status) + '</li>';
+    }).join('') + knowsOf.map(function (x) {
+      return '<li>Knows about ' + nameSpan(x.id, E) + '’s ' + esc(x.item) + '</li>';
+    }).join('');
+
+    var alls = (D.alliances[String(ep)] || []).filter(function (g) { return g.members.indexOf(id) !== -1; });
+    var allHtml = alls.map(function (g) {
+      var others = g.members.filter(function (m) { return m !== id && !(D.outEp[m] < ep); });
+      return '<li><strong>' + esc(g.name) + '</strong> <span class="tag">' + esc(g.kind) + '</span><br>' +
+        (others.length ? 'With ' + others.map(function (m) { return nameSpan(m, E); }).join(', ') : 'No one else left') + '</li>';
+    }).join('');
+
+    function block(title, inner, empty) {
+      return '<section class="pblock"><h3 class="tag">' + title + '</h3>' +
+        (inner ? '<ul>' + inner + '</ul>' : '<p class="pempty">' + empty + '</p>') + '</section>';
+    }
+
+    return '<div class="profile" role="dialog" aria-modal="true" aria-labelledby="p-name"><div class="profile-inner">' +
+      '<button class="pclose" data-close aria-label="Close profile">×</button>' +
+      '<div class="phead"><span class="ring' + (boot ? ' gone' : '') + '" style="--c:' + color + '">' + face(c) + '</span>' +
+        '<div><h2 class="card-name" id="p-name" style="color:' + text + '">' + esc(cleanName(c.name)) + '</h2>' +
+        '<p class="pmeta">' + [c.job, c.age, c.home].filter(Boolean).map(esc).join(' · ') + '</p>' +
+        '<p class="pstatus">' + status + '</p></div></div>' +
+      '<p class="summary pfine">As of ' + epLabel(ep) + '</p>' +
+      '<section class="pblock"><h3 class="tag">Tribes</h3><div class="ppath">' + pathHtml + '</div></section>' +
+      '<div class="pstats"><div><strong>' + cast.length + '</strong><span>Tribals</span></div>' +
+        '<div><strong>' + hits + '</strong><span>Votes with the boot</span></div>' +
+        '<div><strong>' + received + '</strong><span>Votes against</span></div></div>' +
+      block('Vote history', cast.join(''), 'Hasn’t been to Tribal Council yet.') +
+      block('Advantages', advHtml, 'None that we know of.') +
+      block('Alliances', allHtml, ep === 0 ? 'Everyone just met.' : 'Not in any alliance the recaps describe.') +
+      '<p class="pwiki"><a href="' + esc(wiki(c.name)) + '" target="_blank" rel="noopener">' +
+        esc(cleanName(c.name)) + ' on the Survivor Wiki ↗</a></p>' +
+      '</div></div>';
+  }
+
   function renderCastaways(ep) {
     var boots = [];
     for (var j = 1; j <= ep; j++) {
@@ -187,7 +369,7 @@
     var ep = gateOpen ? 0 : state.ep;
     var E = D.episodes[ep];
     var last = latest();
-    var titles = { tribes: 'Current Survivor Tribes', alliances: 'Alliances', advantages: 'Advantages', castaways: 'Castaways' };
+    var titles = { tribes: 'Current Survivor Tribes', alliances: 'Alliances', advantages: 'Advantages', votes: 'Vote History', castaways: 'Castaways' };
 
     var tabs = VIEWS.map(function (v) {
       return '<button class="tab' + (state.view === v[0] ? ' on' : '') + '" data-view="' + v[0] + '"' +
@@ -201,6 +383,7 @@
 
     var body = state.view === 'alliances' ? renderAlliances(E, ep)
       : state.view === 'advantages' ? renderAdvantages(E, ep)
+      : state.view === 'votes' ? renderVotes(E, ep)
       : state.view === 'castaways' ? renderCastaways(ep)
       : renderTribes(E);
 
@@ -222,13 +405,29 @@
         '<button class="chip" data-shield>Spoiler shield</button>' +
         '<p class="credit">Titles set in Survivant by Tepid Monkey Fonts · <a href="assets/fonts/ReadMe.txt" target="_blank" rel="noopener">font ReadMe</a> · Unofficial fan site, not affiliated with CBS</p>' +
       '</footer>' +
-      (gateOpen ? renderGate() : '');
+      (gateOpen ? renderGate() : '') +
+      (!gateOpen && state.profile ? renderProfile(state.profile, ep) : '');
 
+    document.body.classList.toggle('locked', !gateOpen && !!state.profile);
     document.title = (gateOpen ? 'Survivor 51 Tribe Tracker' : titles[state.view] + ' · ' + epLabel(ep) + ' · Survivor 51');
     if (gateOpen) {
       var first = app.querySelector('.gate-btn');
       if (first) first.focus({ preventScroll: true });
+    } else if (state.profile) {
+      app.querySelector('.pclose').focus({ preventScroll: true });
     }
+  }
+
+  function openProfile(id) {
+    state.profile = id;
+    render();
+  }
+  function closeProfile() {
+    var id = state.profile;
+    state.profile = null;
+    render();
+    var back = app.querySelector('a[data-id="' + id + '"]');
+    if (back) back.focus({ preventScroll: true });
   }
 
   function go(n) {
@@ -238,9 +437,17 @@
 
   // ---------- events ----------
   app.addEventListener('click', function (e) {
+    var link = e.target.closest('a[data-id]');
+    if (link && !(e.metaKey || e.ctrlKey || e.shiftKey || e.button)) {
+      e.preventDefault();
+      openProfile(link.getAttribute('data-id'));
+      return;
+    }
+    if (e.target.classList && e.target.classList.contains('profile')) { closeProfile(); return; }
     var t = e.target.closest('button');
     if (!t) return;
-    if (t.hasAttribute('data-ep')) go(parseInt(t.getAttribute('data-ep'), 10));
+    if (t.hasAttribute('data-close')) closeProfile();
+    else if (t.hasAttribute('data-ep')) go(parseInt(t.getAttribute('data-ep'), 10));
     else if (t.hasAttribute('data-step')) go((state.ep || 0) + parseInt(t.getAttribute('data-step'), 10));
     else if (t.hasAttribute('data-view')) {
       state.view = t.getAttribute('data-view');
@@ -251,6 +458,10 @@
       render();
       window.scrollTo(0, 0);
     }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && state.profile) closeProfile();
   });
 
   window.addEventListener('hashchange', function () {
@@ -290,7 +501,13 @@
   // ---------- load ----------
   fetch('data.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function (d) { D = d; render(); })
+    .then(function (d) {
+      D = d;
+      D.outEp = {};
+      Object.keys(D.cast).forEach(function (k) { D.cast[k].key = k; });
+      D.episodes.forEach(function (x) { x.out.forEach(function (o) { D.outEp[o.id] = x.n; }); });
+      render();
+    })
     .catch(function () {
       app.innerHTML = '<p class="loading">Couldn’t load the season data. Try refreshing.</p>';
     });

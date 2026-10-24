@@ -1,6 +1,6 @@
 # Survivor 51 Tribe Tracker
 
-Spoiler-safe fan site showing tribes, alliances, advantages and castaways for each episode of Survivor 51.
+Spoiler-safe fan site showing tribes, alliances, advantages, votes and castaway profiles for each episode of Survivor 51.
 Plain HTML, CSS and JavaScript. No build step.
 
 ## Files
@@ -16,6 +16,9 @@ Plain HTML, CSS and JavaScript. No build step.
 1. Add one object to `episodes`:
    `n` (number), `title`, `aired` (e.g. "Oct 21"), `tribes` (lineup at the END of the episode, by tribe key),
    `out` (who left, in order: `{ "id", "how", "tribe" }`, where `tribe` is the tribe they left from).
+   Also `tribals`: one object per Tribal Council that episode, `{ "tribe", "votes": { voter: target }, "noVote"?, "note"? }`.
+   A voter who cast extra votes gets a list (e.g. `["linnea","linnea"]`); `noVote` maps anyone who didn't vote to why
+   (e.g. "Shot in the Dark"). This drives the Votes tab and the vote history on each profile.
 2. Add an entry to `alliances` keyed by the episode number (as a string). Each group is
    `{ "name", "kind": "Alliance" | "Trio" | "Pair" | "Voting bloc", "members": [keys], "note" }`.
    Spoiler rule: only what was shown on screen by the end of that episode. Never edit earlier episodes with later reveals.
@@ -28,7 +31,7 @@ Plain HTML, CSS and JavaScript. No build step.
    Leave it out when the recaps don't say.
 4. New tribe or merge: add it to `tribes` with `name`, `color` (ring color) and `text` (label color, at least 4.5:1 contrast on #0B0B0C).
 5. New castaway (e.g. a returning player): add them to `cast` with `name`, `short`, `job` (occupation, shown under
-   their photo on the Tribes page) and `"photo": ""` so they show initials until a photo is added.
+   their photo on the Tribes page), `age`, `home` (hometown) and `"photo": ""` so they show initials until a photo is added.
 
 Commit the change and Netlify republishes the site within about a minute.
 
