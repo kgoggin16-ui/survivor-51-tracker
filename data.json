@@ -54,7 +54,12 @@
       "tribes": { "toka": ["thienan","brady","carter","kristin","maggie","mike"],
                   "savu": ["alexis","jelly","devin","ori"],
                   "dina": ["cristian","kilby","eric","linnea","lewis","sharonda"] },
-      "out": [ { "id": "jenna", "how": "Voted out", "tribe": "savu" } ] }
+      "out": [ { "id": "jenna", "how": "Voted out", "tribe": "savu" } ] },
+    { "n": 5, "title": "Not Here to Get a Pedicure", "aired": "Oct 21",
+      "tribes": { "toka": ["thienan","brady","carter","kristin","maggie","mike"],
+                  "savu": ["jelly","devin","ori"],
+                  "dina": ["cristian","kilby","eric","lewis","sharonda"] },
+      "out": [ { "id": "alexis", "how": "Voted out", "tribe": "savu" }, { "id": "linnea", "how": "Deadlock", "tribe": "dina" } ] }
   ],
 
   "alliances": {
@@ -101,6 +106,16 @@
         "note": "Split by the swap: Devin and Jelly on Savu, Mike and Brady on Toka." },
       { "name": "The Misfits", "kind": "Alliance", "members": ["kilby","maggie","thienan","jenna","lewis","carter"],
         "note": "Scattered across all three tribes by the swap." }
+    ],
+    "5": [
+      { "name": "Helicopter Alliance", "kind": "Alliance", "members": ["devin","jelly","ori","sharonda","aaliyah"],
+        "note": "Devin, Jelly and Ori held together to vote out Alexis 3-1 on Savu." },
+      { "name": "Kilby & Lewis", "kind": "Pair", "members": ["kilby","lewis"],
+        "note": "Used Maggie's two extra votes to force a deadlock and refused to back down." },
+      { "name": "Dina Savus", "kind": "Voting bloc", "members": ["sharonda","eric","cristian","linnea"],
+        "note": "Tied 4-4 against Lewis twice, but wouldn't risk rocks, so Linnea went home." },
+      { "name": "The Misfits", "kind": "Alliance", "members": ["kilby","maggie","thienan","jenna","lewis","carter"],
+        "note": "Maggie visited Dina and handed both her extra votes to Kilby and Lewis to target Linnea." }
     ]
   }
 }
