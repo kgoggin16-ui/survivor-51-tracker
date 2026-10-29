@@ -73,7 +73,16 @@
                    { "tribe": "dina",
                     "votes": {"kilby": ["linnea","linnea"],"lewis": ["linnea","linnea"],"cristian": "lewis","eric": "lewis","linnea": "lewis","sharonda": "lewis"},
                     "note": "Tied 4-4 thanks to Maggie's extra votes. The revote tied again, and Linnea went home rather than anyone drawing rocks." } ],
-      "out": [ { "id": "alexis", "how": "Voted out", "tribe": "savu" }, { "id": "linnea", "how": "Deadlock", "tribe": "dina" } ] }
+      "out": [ { "id": "alexis", "how": "Voted out", "tribe": "savu" }, { "id": "linnea", "how": "Deadlock", "tribe": "dina" } ] },
+    { "n": 6, "title": "I Love Crying", "aired": "Oct 28",
+      "tribes": { "toka": ["thienan","brady","carter","kristin","maggie","mike"],
+                  "savu": ["jelly","devin"],
+                  "dina": ["cristian","kilby","eric","lewis","sharonda"] },
+      "tribals": [ { "tribe": "savu",
+                    "votes": {"devin": "ori","jelly": "ori"},
+                    "noVote": {"ori": "Shot in the Dark"},
+                    "note": "Ori's Shot in the Dark came back not safe. Jelly had revealed her idol before Tribal but didn't play it." } ],
+      "out": [ { "id": "ori", "how": "Voted out", "tribe": "savu" } ] }
   ],
 
   "alliances": {
@@ -130,6 +139,16 @@
         "note": "Tied 4-4 against Lewis twice, but wouldn't risk rocks, so Linnea went home." },
       { "name": "The Misfits", "kind": "Alliance", "members": ["kilby","maggie","thienan","jenna","lewis","carter"],
         "note": "Maggie visited Dina and handed both her extra votes to Kilby and Lewis to target Linnea." }
+    ],
+    "6": [
+      { "name": "Helicopter Alliance", "kind": "Alliance", "members": ["devin","jelly","ori","sharonda","aaliyah"],
+        "note": "Down to a Savu of three, it had to eat its own: Devin and Jelly voted out Ori." },
+      { "name": "Devin & Jelly", "kind": "Pair", "members": ["devin","jelly"],
+        "note": "Ride-or-dies from day one. Ori's pitch tempted Devin, but he stuck with Jelly." },
+      { "name": "Mike & Kristin", "kind": "Pair", "members": ["mike","kristin"],
+        "note": "Mike pitched a twosome again, but Kristin is wary of what he can offer her." },
+      { "name": "Kilby & Lewis", "kind": "Pair", "members": ["kilby","lewis"],
+        "note": "Kilby's choice of Lewis at the deadlock left Eric hurt and feeling betrayed." }
     ]
   },
 
@@ -179,6 +198,16 @@
         "note": "A gift from Maggie, cast against Linnea to force the 4-4 deadlock." },
       { "id": "lewis", "item": "Extra vote", "status": "Played",
         "note": "A gift from Maggie, cast against Linnea to force the 4-4 deadlock." }
+    ],
+    "6": [
+      { "id": "kristin", "item": "Tethered Idol", "status": "Held", "knows": ["sharonda","ori"],
+        "note": "Won on Exile Island. She can only play it on Sharonda or Ori; once both are gone, it's a regular idol." },
+      { "id": "jelly", "item": "Hidden Immunity Idol", "status": "Held", "knows": ["devin","ori"],
+        "note": "Revealed it to Devin and Ori before Tribal, then kept it in her pocket." },
+      { "id": "carter", "item": "Hidden Immunity Idol", "status": "Held",
+        "note": "Still unplayed. Toka won immunity again." },
+      { "id": "devin", "item": "Secret Extra Vote", "status": "Held", "knows": ["sharonda"],
+        "note": "Gave him the swing in a Tribal of three, but he didn't need it in the 2-0 vote." }
     ]
   },
 
