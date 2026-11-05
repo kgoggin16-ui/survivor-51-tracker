@@ -5,7 +5,8 @@
     "toka":  { "name": "Toka", "color": "#F5C518", "text": "#F5C518" },
     "savu":  { "name": "Savu", "color": "#8B5CF6", "text": "#B9A0FF" },
     "dina":  { "name": "Dina", "color": "#E5383B", "text": "#FF7A7C" },
-    "exile": { "name": "Exile Island", "color": "#8A8F98", "text": "#C3C7CE" }
+    "exile": { "name": "Exile Island", "color": "#8A8F98", "text": "#C3C7CE" },
+    "tovutu": { "name": "Tovutu", "color": "#2E86DE", "text": "#6CB4FF" }
   },
 
   "cast": {
@@ -82,7 +83,13 @@
                     "votes": {"devin": "ori","jelly": "ori"},
                     "noVote": {"ori": "Shot in the Dark"},
                     "note": "Ori's Shot in the Dark came back not safe. Jelly had revealed her idol before Tribal but didn't play it." } ],
-      "out": [ { "id": "ori", "how": "Voted out", "tribe": "savu" } ] }
+      "out": [ { "id": "ori", "how": "Voted out", "tribe": "savu" } ] },
+    { "n": 7, "title": "The Girl at the Prom", "aired": "Nov 4",
+      "tribes": { "tovutu": ["thienan","carter","kristin","maggie","mike","jelly","devin","cristian","kilby","eric","lewis","sharonda"] },
+      "tribals": [ { "tribe": "tovutu",
+                    "votes": {"eric": "brady","mike": "brady","sharonda": "brady","jelly": "brady","devin": "brady","cristian": "brady","kilby": "brady","maggie": "brady","kristin": "brady","brady": "eric","carter": "eric","thienan": "eric","lewis": "eric"},
+                    "note": "The first merged Tribal. Mike won the season's first individual immunity, and no one played an advantage." } ],
+      "out": [ { "id": "brady", "how": "Voted out", "tribe": "tovutu" } ] }
   ],
 
   "alliances": {
@@ -149,6 +156,18 @@
         "note": "Mike pitched a twosome again, but Kristin is wary of what he can offer her." },
       { "name": "Kilby & Lewis", "kind": "Pair", "members": ["kilby","lewis"],
         "note": "Kilby's choice of Lewis at the deadlock left Eric hurt and feeling betrayed." }
+    ],
+    "7": [
+      { "name": "Helicopter Alliance", "kind": "Alliance", "members": ["devin","jelly","ori","sharonda","aaliyah"],
+        "note": "Reunited at the merge. Jelly pushed the Brady vote, and Devin tipped off Maggie." },
+      { "name": "Devin & Jelly", "kind": "Pair", "members": ["devin","jelly"],
+        "note": "Still a unit, sitting on an idol and an extra vote between them." },
+      { "name": "Kristin & Sharonda", "kind": "Pair", "members": ["kristin","sharonda"],
+        "note": "Kristin promised no secrets and let Sharonda hold her idol, but Sharonda kept the Helicopter Alliance to herself." },
+      { "name": "Mike & Jelly", "kind": "Pair", "members": ["mike","jelly"],
+        "note": "Fed up with Brady, Mike flipped to the old Savus and teamed up with Jelly." },
+      { "name": "Brady's bloc", "kind": "Voting bloc", "members": ["brady","carter","thienan","lewis"],
+        "note": "Voted Eric together and lost 9-4." }
     ]
   },
 
@@ -208,6 +227,16 @@
         "note": "Still unplayed. Toka won immunity again." },
       { "id": "devin", "item": "Secret Extra Vote", "status": "Held", "knows": ["sharonda"],
         "note": "Gave him the swing in a Tribal of three, but he didn't need it in the 2-0 vote." }
+    ],
+    "7": [
+      { "id": "kristin", "item": "Tethered Idol", "status": "Held", "knows": ["sharonda"],
+        "note": "Told Sharonda everything and let her hold it. It now turns into a regular idol if Sharonda goes." },
+      { "id": "jelly", "item": "Hidden Immunity Idol", "status": "Held", "knows": ["devin","sharonda"],
+        "note": "She filled Sharonda in on it at the merge, but didn't need it." },
+      { "id": "carter", "item": "Hidden Immunity Idol", "status": "Held",
+        "note": "Still unplayed. No one used an advantage at the first merged Tribal." },
+      { "id": "devin", "item": "Secret Extra Vote", "status": "Held", "knows": ["sharonda"],
+        "note": "Unused in the 9-4 vote against Brady." }
     ]
   },
 
@@ -231,6 +260,9 @@
            "list": ["sharonda","kristin","thienan","lewis","jelly","ori","carter","maggie","kilby","brady","mike","devin","cristian","eric"],
            "notes": {"lewis": "Big riser: forced the majority to change plans by risking rocks.",
                       "kilby": "Big riser: earned safety by pushing the Savus to vote out Linnea.",
-                      "devin": "Keeps undermining his own game."} }
+                      "devin": "Keeps undermining his own game."} },
+    "6": { "source": "DraftKings Network", "url": "https://dknetwork.draftkings.com/2026/10/29/survivor-51-power-rankings-fallout-after-episode-6/",
+           "list": ["kristin","sharonda","thienan","lewis","kilby","carter","mike","jelly","brady","maggie","cristian","devin","eric"],
+           "notes": {"devin": "Seen as overconfident, and his tight bond with Jelly makes him an easy target."} }
   }
 }
