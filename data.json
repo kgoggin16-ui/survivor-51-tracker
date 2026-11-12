@@ -89,7 +89,14 @@
       "tribals": [ { "tribe": "tovutu",
                     "votes": {"eric": "brady","mike": "brady","sharonda": "brady","jelly": "brady","devin": "brady","cristian": "brady","kilby": "brady","maggie": "brady","kristin": "brady","brady": "eric","carter": "eric","thienan": "eric","lewis": "eric"},
                     "note": "The first merged Tribal. Mike won the season's first individual immunity, and no one played an advantage." } ],
-      "out": [ { "id": "brady", "how": "Voted out", "tribe": "tovutu" } ] }
+      "out": [ { "id": "brady", "how": "Voted out", "tribe": "tovutu" } ] },
+    { "n": 8, "title": "Load the Ark, Two by Two", "aired": "Nov 11",
+      "tribes": { "tovutu": ["thienan","carter","maggie","mike","jelly","devin","cristian","eric","lewis","sharonda"] },
+      "tribals": [ { "tribe": "tovutu",
+                    "votes": {"thienan": "devin","carter": "devin","maggie": "devin","mike": "devin","kilby": "devin","eric": "devin","lewis": "devin","sharonda": "devin","jelly": "carter","devin": "kristin"},
+                    "noVote": {"kristin": "Shot in the Dark, not safe","cristian": "Shot in the Dark, safe"},
+                    "note": "Double Duo: votes named pairs, shown here under the first name (Devin & Jelly, Carter & Cristian, Kristin & Kilby). Jelly's idol cancelled the eight votes for her pair and Cristian's Shot in the Dark cancelled one, so Devin's lone vote sent Kristin and Kilby home. Lewis and Sharonda won immunity." } ],
+      "out": [ { "id": "kristin", "how": "Voted out (Double Duo)", "tribe": "tovutu" }, { "id": "kilby", "how": "Voted out (Double Duo)", "tribe": "tovutu" } ] }
   ],
 
   "alliances": {
@@ -168,6 +175,18 @@
         "note": "Fed up with Brady, Mike flipped to the old Savus and teamed up with Jelly." },
       { "name": "Brady's bloc", "kind": "Voting bloc", "members": ["brady","carter","thienan","lewis"],
         "note": "Voted Eric together and lost 9-4." }
+    ],
+    "8": [
+      { "name": "Salt of the Earth", "kind": "Alliance", "members": ["carter","cristian","thienan","kilby","lewis","maggie"],
+        "note": "Carter's new majority. It went after Devin and Jelly, but Jelly's idol cost it Kilby." },
+      { "name": "Helicopter Alliance", "kind": "Alliance", "members": ["devin","jelly","ori","sharonda","aaliyah"],
+        "note": "Cracking: Sharonda was among the eight votes against Devin and Jelly." },
+      { "name": "Devin & Jelly", "kind": "Pair", "members": ["devin","jelly"],
+        "note": "Double Duo partners. Jelly's idol saved them both." },
+      { "name": "Carter & Cristian", "kind": "Pair", "members": ["carter","cristian"],
+        "note": "Duo partners. Carter showed Cristian his idol, and Cristian's Shot in the Dark kept them safe." },
+      { "name": "Cristian & Eric", "kind": "Pair", "members": ["cristian","eric"],
+        "note": "Cristian gave Eric his extra vote and asked him to aim it at Devin and Jelly." }
     ]
   },
 
@@ -237,6 +256,20 @@
         "note": "Still unplayed. No one used an advantage at the first merged Tribal." },
       { "id": "devin", "item": "Secret Extra Vote", "status": "Held", "knows": ["sharonda"],
         "note": "Unused in the 9-4 vote against Brady." }
+    ],
+    "8": [
+      { "id": "jelly", "item": "Hidden Immunity Idol", "status": "Played",
+        "note": "Played for herself and Devin, cancelling all eight votes against them." },
+      { "id": "kristin", "item": "Tethered Idol", "status": "Lost",
+        "note": "Went home with Kristin unplayed. It could only ever be used on Sharonda." },
+      { "id": "carter", "item": "Hidden Immunity Idol", "status": "Held", "knows": ["cristian"],
+        "note": "Showed it to Cristian to build trust, then didn't need it." },
+      { "id": "devin", "item": "Secret Extra Vote", "status": "Held", "knows": ["sharonda"],
+        "note": "Recaps don't mention it at the Double Duo Tribal." },
+      { "id": "cristian", "item": "Extra Vote", "status": "Given away",
+        "note": "Won by following a clue, then handed to Eric." },
+      { "id": "eric", "item": "Extra Vote", "status": "Lost",
+        "note": "A gift from Cristian. Eric chose not to play it, and it expired." }
     ]
   },
 
@@ -263,6 +296,9 @@
                       "devin": "Keeps undermining his own game."} },
     "6": { "source": "DraftKings Network", "url": "https://dknetwork.draftkings.com/2026/10/29/survivor-51-power-rankings-fallout-after-episode-6/",
            "list": ["kristin","sharonda","thienan","lewis","kilby","carter","mike","jelly","brady","maggie","cristian","devin","eric"],
-           "notes": {"devin": "Seen as overconfident, and his tight bond with Jelly makes him an easy target."} }
+           "notes": {"devin": "Seen as overconfident, and his tight bond with Jelly makes him an easy target."} },
+    "7": { "source": "DraftKings Network", "url": "https://dknetwork.draftkings.com/2026/11/06/survivor-51-power-rankings-fallout-after-episode-7/",
+           "list": ["sharonda","kristin","thienan","lewis","jelly","carter","kilby","maggie","devin","mike","cristian","eric"],
+           "notes": {"sharonda": "Rose to the top after Kristin trusted her with the Tethered Idol."} }
   }
 }
