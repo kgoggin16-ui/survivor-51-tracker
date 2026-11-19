@@ -96,7 +96,10 @@
                     "votes": {"thienan": "devin","carter": "devin","maggie": "devin","mike": "devin","kilby": "devin","eric": "devin","lewis": "devin","sharonda": "devin","jelly": "carter","devin": "kristin"},
                     "noVote": {"kristin": "Shot in the Dark, not safe","cristian": "Shot in the Dark, safe"},
                     "note": "Double Duo: votes named pairs, shown here under the first name (Devin & Jelly, Carter & Cristian, Kristin & Kilby). Jelly's idol cancelled the eight votes for her pair and Cristian's Shot in the Dark cancelled one, so Devin's lone vote sent Kristin and Kilby home. Lewis and Sharonda won immunity." } ],
-      "out": [ { "id": "kristin", "how": "Voted out (Double Duo)", "tribe": "tovutu" }, { "id": "kilby", "how": "Voted out (Double Duo)", "tribe": "tovutu" } ] }
+      "out": [ { "id": "kristin", "how": "Voted out (Double Duo)", "tribe": "tovutu" }, { "id": "kilby", "how": "Voted out (Double Duo)", "tribe": "tovutu" } ] },
+    { "n": 9, "title": "Wilder Than a Cat in a Bathtub", "aired": "Nov 18",
+      "tribes": { "tovutu": ["thienan","carter","maggie","mike","jelly","devin","cristian","eric","sharonda"] },
+      "out": [ { "id": "lewis", "how": "Lost the coin flip", "tribe": "tovutu" } ] }
   ],
 
   "alliances": {
@@ -187,6 +190,16 @@
         "note": "Duo partners. Carter showed Cristian his idol, and Cristian's Shot in the Dark kept them safe." },
       { "name": "Cristian & Eric", "kind": "Pair", "members": ["cristian","eric"],
         "note": "Cristian gave Eric his extra vote and asked him to aim it at Devin and Jelly." }
+    ],
+    "9": [
+      { "name": "Helicopter Alliance", "kind": "Alliance", "members": ["devin","jelly","ori","sharonda","aaliyah"],
+        "note": "Sharonda is still secretly working with Jelly and Devin." },
+      { "name": "Devin & Jelly", "kind": "Pair", "members": ["devin","jelly"],
+        "note": "Out for revenge on the players who targeted them in the Double Duo vote." },
+      { "name": "Carter & Cristian", "kind": "Pair", "members": ["carter","cristian"],
+        "note": "Carter planned to idol them both, but Cristian told Sharonda about the idol behind his back." },
+      { "name": "Cristian & Sharonda", "kind": "Pair", "members": ["cristian","sharonda"],
+        "note": "Cristian trusts her, and shared Carter's idol secret to seal their deal." }
     ]
   },
 
@@ -270,6 +283,12 @@
         "note": "Won by following a clue, then handed to Eric." },
       { "id": "eric", "item": "Extra Vote", "status": "Lost",
         "note": "A gift from Cristian. Eric chose not to play it, and it expired." }
+    ],
+    "9": [
+      { "id": "carter", "item": "Hidden Immunity Idol", "status": "Held", "knows": ["cristian","sharonda"],
+        "note": "Cristian told Sharonda about it behind Carter's back. Carter won immunity, so it stayed in his bag." },
+      { "id": "devin", "item": "Secret Extra Vote", "status": "Held", "knows": ["sharonda"],
+        "note": "No vote was held this week, so it went unused." }
     ]
   },
 
@@ -299,6 +318,9 @@
            "notes": {"devin": "Seen as overconfident, and his tight bond with Jelly makes him an easy target."} },
     "7": { "source": "DraftKings Network", "url": "https://dknetwork.draftkings.com/2026/11/06/survivor-51-power-rankings-fallout-after-episode-7/",
            "list": ["sharonda","kristin","thienan","lewis","jelly","carter","kilby","maggie","devin","mike","cristian","eric"],
-           "notes": {"sharonda": "Rose to the top after Kristin trusted her with the Tethered Idol."} }
+           "notes": {"sharonda": "Rose to the top after Kristin trusted her with the Tethered Idol."} },
+    "8": { "source": "DraftKings Network", "url": "https://dknetwork.draftkings.com/2026/11/13/survivor-51-power-rankings-fallout-after-episode-8/",
+           "list": ["sharonda","lewis","carter","cristian","maggie","thienan","jelly","devin","mike","eric"],
+           "notes": {"carter": "Back on the radar as a possible winner after a few quiet weeks."} }
   }
 }
